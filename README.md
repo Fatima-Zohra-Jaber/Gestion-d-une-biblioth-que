@@ -1,5 +1,4 @@
-# Gestion-d-une-biblioth-que
-Gestion d’une bibliothèque 
+# Gestion d'une bibliothèque
 1. Créer une classe Livre : 
 • Propriétés : 
 o titre (string) : le titre du livre. 
