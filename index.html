@@ -4,122 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion de Bibliothèque</title>
-   <style>
-    :root {
-    --primary-color: #2196F3;
-    --error-color: #f44336;
-    --text-color: #333;
-    --background-color: #f5f5f5;
-    --border-radius: 4px;
-}
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
-    background-color: var(--background-color);
-    color: var(--text-color);
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-header {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-.form-section {
-    background: white;
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.form-group {
-    margin-bottom: 1rem;
-}
-
-.form-control {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: var(--border-radius);
-    font-size: 1rem;
-}
-
-.btn {
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-.btn-primary {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.search-container {
-    margin: 2rem 0;
-    display: flex;
-    gap: 1rem;
-}
-
-.search-input {
-    flex: 1;
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: var(--border-radius);
-}
-
-.book-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.book-table th,
-.book-table td {
-    padding: 1rem;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-.error {
-    color: var(--error-color);
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-}
-
-@media (max-width: 768px) {
-    .container {
-        padding: 10px;
-    }
-    
-    .table-responsive {
-        overflow-x: auto;
-    }
-}
-   </style></head>
+</head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Gestion de Bibliothèque</h1>
+        <header class="app-header">
+            <h1><i class="fas fa-book-open"></i> BiblioTech</h1>
+            <p>Gestion de Bibliothèque</p>
         </header>
 
         <main>
             <section class="form-section">
+                <h2>Ajouter un livre</h2>
                 <form id="form" class="book-form">
                     <div class="form-group">
                         <label for="titre">Titre du livre</label>
@@ -135,54 +33,46 @@ header {
 
                     <div class="form-group">
                         <label for="anneePublication">Année de publication</label>
-                        <input type="number" id="anneePublication" class="form-control" placeholder="AAAA">
+                        <input type="number" id="anneePublication" class="form-control" placeholder="Entrez l'année de publication">
                         <span class="error" id="anneeErreur"></span>
                     </div>
 
                     <div class="form-group">
                         <label for="prix">Prix du livre</label>
-                        <div class="price-input">
-                            <input type="number" id="prix" class="form-control" placeholder="0.00">
-                            <span class="currency">€</span>
-                        </div>
+                        <input type="number" id="prix" class="form-control" placeholder="0.00 DH">
                         <span class="error" id="prixErreur"></span>
                     </div>
 
-                    <button type="button" onclick="AjouterLivre()" class="btn btn-primary">
-                        <i class="fas fa-plus"></i> Ajouter
-                    </button>
+                    <input type="button" value="Ajouter" onclick="AjouterLivre()" id="ajout">
+
                 </form>
             </section>
 
             <section class="search-section">
-                <div class="search-container">
-                    <input type="search" id="recherche" class="search-input" placeholder="Rechercher un livre...">
-                    <button onclick="ChercherLivres()" class="btn btn-search">
+                    <input type="search" id="recherche" class="search-input" placeholder="Entrez une année">
+                    <button onclick="ChercherLivres()" id="search">
                         <i class="fas fa-search"></i>
                     </button>
-                </div>
             </section>
 
             <section class="table-section">
-                <div class="table-responsive">
-                    <table id="table" class="book-table">
-                        <thead>
-                            <tr>
-                                <th>Titre</th>
-                                <th>Auteur</th>
-                                <th>Année</th>
-                                <th>Prix</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Contenu dynamique -->
-                        </tbody>
-                    </table>
-                </div>
+                <h2>Catalogue de livres</h2>
+                <table id="table">
+                    <thead>
+                        <tr>
+                            <th>Titre</th>
+                            <th>Auteur</th>
+                            <th>Année</th>
+                            <th>Prix</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Insertion des lignes en JS -->
+                    </tbody>
+                </table>
             </section>
         </main>
-    </div>
 
     <script src="script.js"></script>
 </body>

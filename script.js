@@ -141,7 +141,7 @@ function InsererLignes(i){
     nouveauLigne.insertCell(1).innerHTML=livres[i].auteur;
     nouveauLigne.insertCell(2).innerHTML=livres[i].anneePublication;
     nouveauLigne.insertCell(3).innerHTML=livres[i].prix;
-    nouveauLigne.insertCell(4).innerHTML=`<img src="images/remove.png" alt="sipprimer" onclick="SupprimerLivre(${i})">
-    <img src="images/pencil.png" alt="modifier" onclick="ModifierLivre(${i})">`;
+    nouveauLigne.insertCell(4).innerHTML=`<img src="images/pencil.png" alt="modifier" onclick="ModifierLivre(${i})">
+    <img src="images/remove.png" alt="sipprimer" onclick="SupprimerLivre(${i})">`;
 }
 
