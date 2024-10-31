@@ -19,29 +19,6 @@ class Livre{
     let table = document.getElementById('table');
     let tbody=table.getElementsByTagName('tbody')[0];
     
-// Initialiser Pickadate sur le champ
-$('#anneePublication').pickadate({
-    selectYears: true,      // Active le sélecteur d'années
-    selectMonths: false,    // Désactive les mois (si vous ne voulez que les années)
-    format: 'yyyy',         // Affiche uniquement l'année
-    min: new Date(2020, 0), // Année minimum
-    max: new Date(2035, 0)  // Année maximum
-});
-
-
-// // Définir la plage d'années
-// const anneeMin = 1800;
-// const anneeMax = 2024;
-
-// // Remplir la liste des années
-// for (let i = anneeMin; i <= anneeMax; i++) {
-//     const option = document.createElement("option");
-//     option.value = i;
-//     option.text = i;
-//     annee.appendChild(option);
-// }
-
-
 function  AjouterLivre(){
  // Réinitialiser les messages d'erreur
     MasquerErreurs();
@@ -69,7 +46,7 @@ function  AjouterLivre(){
  // Actualiser l'affichage
     AfficherLivres();
     
- // Réinitialisation du formulaire après ajout
+ // Réinitialisation du formulaire après l'ajout
     document.getElementById('form').reset();
 
 }
@@ -81,9 +58,7 @@ function AfficherLivres(){
     for(let i=0;i<livres.length;i++){
         InsererLignes(i);
     }
-    
 }
-
 
 function SupprimerLivre(index){
     livres.splice(index, 1);
@@ -145,3 +120,24 @@ function InsererLignes(i){
     <img src="images/remove.png" alt="sipprimer" onclick="SupprimerLivre(${i})">`;
 }
 
+// // Initialiser Pickadate sur le champ
+// $('#anneePublication').pickadate({
+//     selectYears: true, 
+//     selectMonths: false,
+//     format: 'yyyy',       
+//     min: new Date(1900, 0), 
+//     max: new Date(2024, 0) 
+// });
+
+
+// // Définir la plage d'années
+// const anneeMin = 1800;
+// const anneeMax = 2024;
+
+// // Remplir la liste des années
+// for (let i = anneeMin; i <= anneeMax; i++) {
+//     const option = document.createElement("option");
+//     option.value = i;
+//     option.text = i;
+//     annee.appendChild(option);
+// }

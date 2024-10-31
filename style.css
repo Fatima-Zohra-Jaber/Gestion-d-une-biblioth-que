@@ -2,91 +2,67 @@
     margin: 0px;
     padding: 0px;
 }
-
-    /* --secondary-color: #03dac6;
-    --success-color: #4caf50; */
-
 body{
     font-family: 'Poppins', sans-serif;
     background-color: #f5f5f5;
     color: #3a3939;
     line-height: 1.6;
 }
-
-.app-header{
+header{
     text-align: center;
     color:  #333333;
     margin-top: 1rem;
 }
 
-.app-header h1{
+header h1{
     color: #6200ea;
     font-size: 2.5em;
 }
 .form-section,.table-section{
     background-color: #ffffff;
-    width: 70%;
+    width: 55%;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
+    padding: 1rem 5rem;
     margin: 2rem auto;
- 
 }
 h2{
     color: #6200ea;
 }
-.form-group{
+.form-groupe{
     margin-bottom: 1.2rem;
-    /* position: relative; */
+    padding: 0.75rem;
+    position: relative;
 }
+
 input[type=text],input[type=number],input[type=search] {
     width: 50%;
     padding: 0.75rem;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
+input[type=text],input[type=number]{
+    position: absolute;
+    left: 20%;
+}
 #ajout {
-    background-color:#6200ea ;
+    display: inline-block;
+    background-color:#6200ea;
     color: #ffffff;
     font-size: 1.2rem;
     cursor: pointer;
     border: none;
     padding: 0.75rem 1.5rem;
     border-radius: 12px;
+    margin: 0px auto;
 }
 #ajout:hover{
     background-color: #5f02e0;
-}
-
-.table-section{
-    width: 80%;
-}
-#table {
-    width: 90%;
-    border-collapse: collapse;
-    margin: 0.5rem auto;
-}
-img{
-    width: 20px;
-    height: 20px;
-}
-#table th,
-#table td {
-    padding: 1rem;
-    text-align: left;
-    border: 1px solid #ddd;
-}
-
-.error {
-    color: #f44336;
-    font-size: 0.85rem;
-    margin-top: 0.25rem;
 }
 .search-section {
     position: relative;
     height: 25px;
 }
-
 input[type=search] {
     position: absolute;
     left: 60%;
@@ -94,7 +70,6 @@ input[type=search] {
     border-radius: 25px 0px 0px 25px;
     border-right: none;
 } 
-
 #search {
     position: absolute;
     left: 80%;
@@ -103,4 +78,28 @@ input[type=search] {
     border: 1px solid #ddd;
     border-radius: 0px 25px 25px 0px;
     border-left: none;
+}
+.table-section{
+    width: 80%;
+}
+#table {
+    width: 90%;
+    border-collapse: collapse;
+    margin: 0.5rem auto;
+}
+
+#table th,
+#table td {
+    padding: 0.5rem 1rem;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+img{
+    width: 20px;
+    height: 20px;
+}
+.error {
+    color: #f44336;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
 }
