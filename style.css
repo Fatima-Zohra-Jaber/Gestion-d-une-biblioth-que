@@ -13,7 +13,6 @@ header{
     color:  #333333;
     margin-top: 1rem;
 }
-
 header h1{
     color: #6200ea;
     font-size: 2.5em;
@@ -21,32 +20,37 @@ header h1{
 .form-section,.table-section{
     background-color: #ffffff;
     width: 55%;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     padding: 1rem 5rem;
     margin: 2rem auto;
 }
 h2{
     color: #6200ea;
+    text-align: center;
 }
 .form-groupe{
-    margin-bottom: 1.2rem;
+    margin: 1.2rem 0px;
     padding: 0.75rem;
     position: relative;
 }
-
-input[type=text],input[type=number],input[type=search] {
-    width: 50%;
+input[type=text],input[type=number] {
+    width: 60%;
     padding: 0.75rem;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
 input[type=text],input[type=number]{
     position: absolute;
-    left: 20%;
+    left: 30%;
+    top: 8%;
+} 
+.form-groupe input[type="text"]:focus,input[type="number"]:focus{
+    border-color: #6200ea;
+    outline: none;
 }
 #ajout {
-    display: inline-block;
+    display: block;
     background-color:#6200ea;
     color: #ffffff;
     font-size: 1.2rem;
@@ -61,45 +65,65 @@ input[type=text],input[type=number]{
 }
 .search-section {
     position: relative;
-    height: 25px;
+    height: 40px;
 }
-input[type=search] {
+#recherche {
     position: absolute;
-    left: 60%;
-    width: 20%;
+    left: 61.2%;
+    top:0px;
+    width: 15%;
     border-radius: 25px 0px 0px 25px;
     border-right: none;
+    outline: none;
 } 
 #search {
     position: absolute;
-    left: 80%;
+    left: 78%;
     color: #333333;
+    background-color: #ffffff;
     padding: 0.75rem 1rem;
     border: 1px solid #ddd;
     border-radius: 0px 25px 25px 0px;
     border-left: none;
+    cursor: pointer;
 }
 .table-section{
-    width: 80%;
+    width: 70%;
 }
 #table {
     width: 90%;
     border-collapse: collapse;
     margin: 0.5rem auto;
 }
-
+#table th{
+    background-color: #edeff0; 
+}
 #table th,
 #table td {
     padding: 0.5rem 1rem;
-    text-align: left;
-    border: 1px solid #ddd;
+    text-align: center;
+    border: 1px solid #e9ecef;
 }
+tr:hover {
+    background-color: #f5f5f5;
+}
+/* table tr:nth-child(even) {
+    background-color:#f5f5f5;
+} */
 img{
     width: 20px;
     height: 20px;
+    margin: 0px  8%;
+
+}
+img:hover{
+    cursor: pointer;
 }
 .error {
     color: #f44336;
     font-size: 0.85rem;
-    margin-top: 0.25rem;
+    margin: 0.5rem;
+    position: absolute;
+    left: 30%;
 }
+

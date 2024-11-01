@@ -20,34 +20,20 @@ class Livre{
     let tbody=table.getElementsByTagName('tbody')[0];
     
 function  AjouterLivre(){
- // Réinitialiser les messages d'erreur
-    MasquerErreurs();
- // Vérification des données
-    if(titre.value==""){
-        AfficherErreur("titreErreur","Veuillez saisir le titre du livre");
-        return;
-    }
-    if(auteur.value==""){
-        AfficherErreur("auteurErreur","Veuillez saisir l'auteur du livre");
-        return;
-    }
-    if(annee.value==""){
-        AfficherErreur("anneeErreur","Veuillez saisir l'année de publication du livre");
-        return;
-    }
-    if(prix.value==""){
-        AfficherErreur("prixErreur","Veuillez saisir le prix du livre");
-        return;
-    }
- //  Création d'objet Livre et insertion dans le tableau
-    let livre = new Livre(titre.value, auteur.value, annee.value,prix.value);
-    livres.push(livre);
 
- // Actualiser l'affichage
-    AfficherLivres();
-    
- // Réinitialisation du formulaire après l'ajout
-    document.getElementById('form').reset();
+ // Vérification des données
+    if(ValiderLivre()){
+        //  Création d'objet Livre et insertion dans le tableau
+        let livre = new Livre(titre.value, auteur.value, annee.value,prix.value);
+        livres.push(livre);
+
+        // Actualiser l'affichage
+        AfficherLivres();
+
+        // Réinitialisation du formulaire après l'ajout
+        document.getElementById('form').reset();
+    }
+ 
 
 }
 
@@ -67,11 +53,14 @@ function SupprimerLivre(index){
 }
 
 function ModifierLivre(index){
+// Affecter les valeurs  du livre à modifier dans les input
     document.getElementById("titre").value=livres[index].titre;
     document.getElementById("auteur").value=livres[index].auteur;
     document.getElementById("anneePublication").value=livres[index].anneePublication;
     document.getElementById("prix").value=livres[index].prix;
+// Changer 
     document.getElementById("ajout").value="Modifier";
+    document.getElementById("form-titre").innerHTML="Modifier un livre";
 // Utiliser une fonction anonyme pour gérer l'événement
     document.getElementById("ajout").onclick = function() {
         livres[index].titre=titre.value;
@@ -83,8 +72,45 @@ function ModifierLivre(index){
     // Réinitialisation du formulaire après la modification
         document.getElementById('form').reset();
         document.getElementById("ajout").value="Ajouter";
+        document.getElementById("form-titre").innerHTML="Ajouter un livre";
         document.getElementById("ajout").onclick = AjouterLivre; 
     };
+}
+
+function ValiderLivre(){
+    let valide = true;
+    if(titre.value==""){
+        AfficherErreur("titreErreur","Veuillez saisir le titre du livre");
+        valide=false;
+    }else{
+        MasquerErreurs("titreErreur");
+    }
+    if(auteur.value==""){
+        AfficherErreur("auteurErreur","Veuillez saisir l'auteur du livre");
+        valide=false;
+    }else{
+        MasquerErreurs("auteurErreur");
+    }
+    if(annee.value==""){
+        AfficherErreur("anneeErreur","Veuillez saisir l'année de publication du livre");
+        valide=false;
+    }else{
+        let date=new Date().getFullYear();
+        console.log(Number(date));
+        if(annee.value < 1500 ||  annee.value > Number(date)){
+            AfficherErreur("anneeErreur","Veuillez saisir une  année de publication valide");
+            valide=false;
+        }else{
+            MasquerErreurs("anneeErreur");
+        }
+    }
+    if(prix.value==""){
+        AfficherErreur("prixErreur","Veuillez saisir le prix du livre");
+        valide=false;
+    }else{
+        MasquerErreurs("prixErreur");
+    }
+    return valide
 }
 
 function AfficherErreur(id,message){
@@ -92,13 +118,10 @@ function AfficherErreur(id,message){
     document.getElementById(id).style.display="block";
 }
 
-function MasquerErreurs(){
-    const erreurs=["titreErreur","auteurErreur","anneeErreur","prixErreur"];
-    for(let id of erreurs ){
-        document.getElementById(id).innerHTML = '';
+function MasquerErreurs(id){
+        document.getElementById(id).innerHTML = "";
         document.getElementById(id).style.display = "none"; 
         }
-}
 
 function ChercherLivres(){
     tbody.innerHTML = '';
@@ -119,25 +142,3 @@ function InsererLignes(i){
     nouveauLigne.insertCell(4).innerHTML=`<img src="images/pencil.png" alt="modifier" onclick="ModifierLivre(${i})">
     <img src="images/remove.png" alt="sipprimer" onclick="SupprimerLivre(${i})">`;
 }
-
-// // Initialiser Pickadate sur le champ
-// $('#anneePublication').pickadate({
-//     selectYears: true, 
-//     selectMonths: false,
-//     format: 'yyyy',       
-//     min: new Date(1900, 0), 
-//     max: new Date(2024, 0) 
-// });
-
-
-// // Définir la plage d'années
-// const anneeMin = 1800;
-// const anneeMax = 2024;
-
-// // Remplir la liste des années
-// for (let i = anneeMin; i <= anneeMax; i++) {
-//     const option = document.createElement("option");
-//     option.value = i;
-//     option.text = i;
-//     annee.appendChild(option);
-// }
